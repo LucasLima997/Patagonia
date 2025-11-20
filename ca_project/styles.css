@@ -1,0 +1,13 @@
+/* banner */
+.custom-layout {
+  background-image: url("assets/patagonia.jpg");
+  height: 1080px;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  h5,
+  p {
+    color: white;
+    font-size: 40px;
+    text-shadow: #010101 1px 0px 10px;
+  }
+}

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact</title>
+
+    <!-- Bootstrap CSS via CDN to make our layout clean and responsive -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Custom styles for the website -->
+    <link rel="stylesheet" href="../../global.css" />
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+      /* Error messages appear below each field in red */
+      .error-message {
+        color: red;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+      }
+
+      /* Success message appears after successful submission in green */
+      .success-message {
+        color: green;
+        font-size: 1rem;
+        margin-top: 1rem;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Page header -->
+    <header class="p-1 d-flex justify-content-between">
+      <a href="../../index.html">
+        <img
+          src="../../assets/logo.jpg"
+          alt="Travel Explorer Logo"
+          class="logo"
+        />
+      </a>
+      <nav>
+        <ul class="gap-lg-4 nav">
+          <li class="nav-item">
+            <a class="nav-link custom-nav-link" href="../../index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link custom-nav-link"
+              href="../destination/destinations.html"
+              >Destinations</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link custom-nav-link" href="#">Contact us</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- introduction above the form -->
+    <div class="container my-5">
+      <p class="contact-intro">
+        Have questions? Drop us a message and we’ll get back to you fast!
+      </p>
+    </div>
+
+    <!-- Contact form -->
+    <form class="container" id="myForm" novalidate>
+      <!-- User's name input -->
+      <div class="mb-3">
+        <input
+          type="text"
+          id="name"
+          class="form-control"
+          placeholder="Insert your name *"
+          required
+        />
+        <div class="error-message" id="nameError"></div>
+      </div>
+
+      <!-- User's email input -->
+      <div class="mb-3">
+        <input
+          type="email"
+          id="email"
+          class="form-control"
+          placeholder="E-mail*"
+          required
+        />
+        <div class="error-message" id="emailError"></div>
+      </div>
+
+      <!-- Phone number input -->
+      <div class="mb-3">
+        <input
+          type="tel"
+          id="phone"
+          class="form-control"
+          placeholder="Phone number*"
+          required
+        />
+        <div class="error-message" id="phoneError"></div>
+      </div>
+
+      <!-- Drop down options  -->
+      <div class="mb-3">
+        <select id="queryType" class="form-select" required>
+          <option value="" selected disabled>Choose option</option>
+          <option value="Booking">Booking</option>
+          <option value="Payment">Payment</option>
+          <option value="General Info">General Info</option>
+          <option value="Other">Other</option>
+        </select>
+        <div class="error-message" id="queryTypeError"></div>
+      </div>
+
+      <!-- Message textarea -->
+      <div class="mb-3">
+        <textarea
+          id="message"
+          rows="6"
+          class="form-control"
+          placeholder="Send a message to our Team*"
+          required
+        ></textarea>
+        <div class="error-message" id="messageError"></div>
+      </div>
+
+      <!-- Submit button -->
+      <button type="submit" class="btn custom-submit">Submit</button>
+
+      <!-- Success message displayed after successful submission -->
+      <div class="success-message" id="successMessage"></div>
+    </form>
+
+    <!-- Footer -->
+    <div class="container">
+      <footer class="py-3 my-4 custom-footer">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+          <li class="nav-item"><a href="#" class="nav-link px-2">Home</a></li>
+          <li class="nav-item">
+            <a href="#" class="nav-link px-2">Destinations</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link px-2">Pricing</a>
+          </li>
+          <li class="nav-item"><a href="#" class="nav-link px-2">FAQs</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2">About</a></li>
+        </ul>
+        <p class="text-center">© 2025 Travel Explorer, Inc</p>
+      </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+      // Grab elements from the page
+      const form = document.getElementById("myForm");
+      const nameInput = document.getElementById("name");
+      const emailInput = document.getElementById("email");
+      const phoneInput = document.getElementById("phone");
+      const messageInput = document.getElementById("message");
+
+      const nameError = document.getElementById("nameError");
+      const emailError = document.getElementById("emailError");
+      const phoneError = document.getElementById("phoneError");
+      const messageError = document.getElementById("messageError");
+      const successMessage = document.getElementById("successMessage");
+
+      // Triggered when the user clicks submit
+      form.addEventListener("submit", function (e) {
+        e.preventDefault(); // Prevent page reload
+        let valid = true;
+
+        // Clear previous messages
+        nameError.textContent = "";
+        emailError.textContent = "";
+        phoneError.textContent = "";
+        messageError.textContent = "";
+        successMessage.textContent = "";
+
+        // Validate name: must be at least 5 characters
+        if (nameInput.value.trim().length < 5) {
+          nameError.textContent = "Name must be at least 5 characters.";
+          valid = false;
+        }
+
+        // Validate email using a simple regex
+        const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+        if (!emailPattern.test(emailInput.value.trim())) {
+          emailError.textContent = "Please enter a valid email.";
+          valid = false;
+        }
+
+        // Validate phone: numbers only, 9-15 digits
+        const phonePattern = /^[0-9]{9,15}$/;
+        if (!phonePattern.test(phoneInput.value.trim())) {
+          phoneError.textContent = "Phone must be 9-15 digits.";
+          valid = false;
+        }
+
+        // Validate message: at least 15 characters
+        if (messageInput.value.trim().length < 15) {
+          messageError.textContent = "Message must be at least 15 characters.";
+          valid = false;
+        }
+
+        // If everything is valid, show success and reset form
+        if (valid) {
+          successMessage.textContent =
+            "Your message has been sent successfully!";
+          form.reset();
+        }
+      });
+    </script>
+  </body>
+</html>

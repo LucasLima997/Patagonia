@@ -1,0 +1,24 @@
+/* set the submit buttom */
+
+.custom-submit {
+  font-weight: bold;
+  text-decoration: none;
+  background-color: #ff751f;
+  color: #fff !important;
+  transition: all 400ms ease;
+  &:hover {
+    background-color: #ff751f;
+    filter: brightness(1.15); /* effect of brightness */
+  }
+}
+
+/* set the font and text  */
+
+.contact-intro {
+  font-size: 1.25rem;
+  font-family: "Arial", sans-serif;
+  font-weight: 500;
+  color: #ff751f;
+  text-align: center;
+  /margin-top: 0.5rem;
+}

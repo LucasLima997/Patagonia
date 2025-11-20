@@ -1,0 +1,30 @@
+.card-img-top {
+  height: 450px; /* fixed height for all cards */
+  width: 100%; /* occupies the full width of the card */
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+}
+/* Card Hover Effect */
+.card {
+  overflow: hidden;
+  border: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+/* set the shadow */
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+/* set the transition */
+
+.card img {
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+/* set the brightness */
+
+.card:hover img {
+  transform: scale(1.07);
+  filter: brightness(1.15);
+}

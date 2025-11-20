@@ -1,0 +1,49 @@
+/* header */
+.custom-header {
+  background-color: rgb(255, 255, 255);
+}
+/* logo */
+.logo {
+  width: 300px; /* width of the logo */
+  height: auto;
+  object-fit: contain;
+}
+/*  set the color of the nav bar */
+.custom-nav {
+  font-weight: bold;
+  text-decoration: none;
+  background-color: #ff751f;
+  color: #fff;
+  transition: all 400ms ease;
+  &:hover {
+    filter: brightness(1.15);
+  }
+}
+
+/* footer*/
+
+.custom-footer {
+  a {
+    color: #ff751f;
+    transition: all 400ms ease;
+
+    &:hover {
+      color: #713008;
+    }
+  }
+  p {
+    color: #ff751f;
+  }
+}
+
+/* set the color the text footer*/
+
+.custom-nav-link {
+  color: #ff751f;
+  font-weight: bold;
+  transition: all 400ms ease;
+
+  &:hover {
+    color: #713008;
+  }
+}
